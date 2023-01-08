@@ -1,0 +1,31 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  overflow-x: none;
+}
+body {
+  overflow-x: none;
+}
+a {
+  color: inherit;
+  text-decoration: none;
+}
+.barmen {
+  background: url('/barman.png') no-repeat;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-size: 100%;
+  background-position: 65% 45%;
+}
