@@ -1,5 +1,6 @@
 import { signOut, useSession } from 'next-auth/react';
 import Link from 'next/link';
+import Image from 'next/image';
 
 const Navbar: React.FC = () => {
   const { data: session } = useSession();
@@ -11,7 +12,7 @@ const Navbar: React.FC = () => {
       <div className='w-full  flex-grow sm:flex justify-center items-center gap-4 '>
         <div className='text-sm lg:flex-grow'>
           <Link passHref href='/'>
-            <h1 className='text-[#000] uppercase text-3xl font-thin text-center sm:text-left'>
+            <h1 className='text-[#000] uppercase text-3xl font-thin text-center sm:text-left mt-2'>
               <span className='text-golden'>Golden</span> Cocktails
             </h1>
           </Link>
@@ -25,9 +26,13 @@ const Navbar: React.FC = () => {
               <button className='text-carmin  py-2 px-4 uppercase sm:text-lg font-thin' onClick={() => signOut()}>
                 Log Out
               </button>
-              {avatar ? (
-                <img src={avatar as string} alt={session?.user?.name || ''} className=' hidden sm:block  w-10 h-10 rounded-full' />
-              ) : null}
+              <Image
+                src={avatar ? avatar : '/emptyavatar.jpg'}
+                alt='image'
+                width={50}
+                height={50}
+                className=' hidden sm:block  w-10 h-10 rounded-full'
+              />
             </>
           ) : (
             <Link href='/login'>
