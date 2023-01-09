@@ -50,9 +50,8 @@ const Cocktail: React.FC = () => {
           <Skeleton />
         ) : (
           <>
-            {' '}
-            <div className='flex p-4 gap-4'>
-              <div className='image w-1/2 '>
+            <div className='sm:flex p-4 gap-4'>
+              <div className='image w-full sm:w-1/2 '>
                 <img src={data.cocktail.imageUrl} alt='' className='w-full object-cover' />
               </div>
               <div className='content w-full flex flex-col justify-center items-center text-center'>
@@ -78,13 +77,13 @@ const Cocktail: React.FC = () => {
               <h3 className='text-3xl text-golden font-light uppercase mb-4'>History</h3>
               <p className='w-[70%] text-darkgray leading-7'>{data.cocktail.history}</p>
             </div>
-            <div className='actions'>
-              <button className='py-2 px-4 border border-golden text-golden uppercase mx-2'>
+            <div className='actions flex'>
+              <button className='py-1  sm:py-2 px-2  sm:px-4 border border-golden text-golden uppercase mx-2'>
                 <Link href={`/edit/${data.cocktail.id}`}>Edit Cocktail</Link>
               </button>
               <button
                 onClick={confirmDeleteCocktail}
-                className='py-2 px-4 border border-carmin text-carmin uppercase mx-2 '
+                className='py-1  sm:py-2 px-2  sm:px-4 border border-carmin text-carmin uppercase mx-2 '
               >
                 Delete Cocktail
               </button>

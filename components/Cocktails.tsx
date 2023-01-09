@@ -35,7 +35,7 @@ const Cocktails: React.FC = () => {
           onChange={e => setSearch(e.target.value)}
         />
       </form>
-      <div className='w-5/6 mx-auto p-2 grid grid-cols-3 gap-4'>
+      <div className='w-5/6 mx-auto p-2 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4'>
         {loading
           ? [...Array(data?.cocktails?.length)]
           : filteredCocktails?.map((drink: Drink, index: number) =>
