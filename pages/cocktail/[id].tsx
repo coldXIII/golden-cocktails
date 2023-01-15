@@ -1,7 +1,7 @@
 import React from 'react';
 import Head from 'next/head';
 import Navbar from '@/components/Navbar';
-import Skeleton from '@/components/Skeleton';
+import ItemSkeleton from '@/components/ItemSkeleton';
 import { useQuery, useMutation } from '@apollo/client';
 import { useRouter } from 'next/router';
 import { useSession } from 'next-auth/react';
@@ -10,7 +10,6 @@ import { DeleteMutation } from '@/graphql/mutations';
 import Link from 'next/link';
 
 const Cocktail: React.FC = () => {
-  const { data: session } = useSession();
   const router = useRouter();
 
   const [deleteCocktail] = useMutation(DeleteMutation);
@@ -35,8 +34,6 @@ const Cocktail: React.FC = () => {
     return <div>Error: {error.message}</div>;
   }
 
-  const authorEmail = data?.cocktail.author.email;
-
   return (
     <>
       <Head>
@@ -47,7 +44,7 @@ const Cocktail: React.FC = () => {
       <Navbar />
       <div className='min-h-[100vh] flex flex-col justify-center items-center px-4 py-8'>
         {loading ? (
-          <Skeleton />
+          <ItemSkeleton />
         ) : (
           <>
             <div className='sm:flex p-4 gap-4'>
@@ -58,8 +55,8 @@ const Cocktail: React.FC = () => {
                 <h1 className='text-3xl text-darkgray font-light uppercase mb-8'>{data.cocktail.title}</h1>
                 <ul className='mb-8 text-darkgray  text-center'>
                   <h3 className='text-xl text-golden font-light uppercase mb-4'>recipe</h3>
-                  {data.cocktail.content.split('*').map((string: string, index: number) => (
-                    <li key={index} className='mb-2 border-b border-golden py-2'>
+                  {data.cocktail.content.split('  ').map((string: string, index: number) => (
+                    <li key={index} className='mb-2'>
                       {string}
                     </li>
                   ))}
